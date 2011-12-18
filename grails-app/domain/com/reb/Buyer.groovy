@@ -12,4 +12,5 @@ class Buyer {
 
     static constraints = {
     }
+
 }

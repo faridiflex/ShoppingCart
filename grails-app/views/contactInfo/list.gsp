@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'contactInfo.label', default: 'ContactInfo')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
@@ -37,20 +37,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${contactInfoInstanceList}" status="i" var="contactInfoInstance">
+                    <g:each in="${contactInfoList}" status="i" var="contactInfo">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${contactInfoInstance.id}">${fieldValue(bean: contactInfoInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${contactInfo.id}">${fieldValue(bean: contactInfo, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: contactInfoInstance, field: "address")}</td>
+                            <td>${fieldValue(bean: contactInfo, field: "address")}</td>
                         
-                            <td>${fieldValue(bean: contactInfoInstance, field: "email")}</td>
+                            <td>${fieldValue(bean: contactInfo, field: "email")}</td>
                         
-                            <td>${fieldValue(bean: contactInfoInstance, field: "mobile")}</td>
+                            <td>${fieldValue(bean: contactInfo, field: "mobile")}</td>
                         
-                            <td>${fieldValue(bean: contactInfoInstance, field: "name")}</td>
+                            <td>${fieldValue(bean: contactInfo, field: "name")}</td>
                         
-                            <td>${fieldValue(bean: contactInfoInstance, field: "phone")}</td>
+                            <td>${fieldValue(bean: contactInfo, field: "phone")}</td>
                         
                         </tr>
                     </g:each>
@@ -58,7 +58,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${contactInfoInstanceTotal}" />
+                <g:paginate total="${contactInfoTotal}" />
             </div>
         </div>
     </body>

@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'registrationInfo.label', default: 'RegistrationInfo')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
@@ -19,14 +19,14 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${registrationInfoInstance}">
+            <g:hasErrors bean="${registrationInfo}">
             <div class="errors">
-                <g:renderErrors bean="${registrationInfoInstance}" as="list" />
+                <g:renderErrors bean="${registrationInfo}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${registrationInfoInstance?.id}" />
-                <g:hiddenField name="version" value="${registrationInfoInstance?.version}" />
+                <g:hiddenField name="id" value="${registrationInfo?.id}" />
+                <g:hiddenField name="version" value="${registrationInfo?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -35,8 +35,8 @@
                                 <td valign="top" class="name">
                                   <label for="activationDate"><g:message code="registrationInfo.activationDate.label" default="Activation Date" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: registrationInfoInstance, field: 'activationDate', 'errors')}">
-                                    <g:datePicker name="activationDate" precision="day" value="${registrationInfoInstance?.activationDate}"  />
+                                <td valign="top" class="value ${hasErrors(bean: registrationInfo, field: 'activationDate', 'errors')}">
+                                    <g:datePicker name="activationDate" precision="day" value="${registrationInfo?.activationDate}"  />
                                 </td>
                             </tr>
                         
@@ -44,8 +44,8 @@
                                 <td valign="top" class="name">
                                   <label for="registrationDate"><g:message code="registrationInfo.registrationDate.label" default="Registration Date" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: registrationInfoInstance, field: 'registrationDate', 'errors')}">
-                                    <g:datePicker name="registrationDate" precision="day" value="${registrationInfoInstance?.registrationDate}"  />
+                                <td valign="top" class="value ${hasErrors(bean: registrationInfo, field: 'registrationDate', 'errors')}">
+                                    <g:datePicker name="registrationDate" precision="day" value="${registrationInfo?.registrationDate}"  />
                                 </td>
                             </tr>
                         

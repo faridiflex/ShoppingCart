@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'registrationInfo.label', default: 'RegistrationInfo')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
@@ -31,14 +31,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${registrationInfoInstanceList}" status="i" var="registrationInfoInstance">
+                    <g:each in="${registrationInfoList}" status="i" var="registrationInfo">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${registrationInfoInstance.id}">${fieldValue(bean: registrationInfoInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${registrationInfo.id}">${fieldValue(bean: registrationInfo, field: "id")}</g:link></td>
                         
-                            <td><g:formatDate date="${registrationInfoInstance.activationDate}" /></td>
+                            <td><g:formatDate date="${registrationInfo.activationDate}" /></td>
                         
-                            <td><g:formatDate date="${registrationInfoInstance.registrationDate}" /></td>
+                            <td><g:formatDate date="${registrationInfo.registrationDate}" /></td>
                         
                         </tr>
                     </g:each>
@@ -46,7 +46,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${registrationInfoInstanceTotal}" />
+                <g:paginate total="${registrationInfoTotal}" />
             </div>
         </div>
     </body>

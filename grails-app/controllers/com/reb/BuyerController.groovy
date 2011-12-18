@@ -1,6 +1,6 @@
 package com.reb
 
-import com.reb.info.ContactInfo
+import com.reb.profile.BuyerProfile
 
 class BuyerController {
 
@@ -22,13 +22,27 @@ class BuyerController {
     }
 
     def save = {
-//        def contactInfo = new ContactInfo(params.contactInfo)
-        def buyerInstance = new Buyer(params)
+        def buyerInstance = new Buyer(params.buyer)
+
+        if(!buyerInstance.validate()){
+            log.debug('Validation failed: '+buyerInstance.errors)
+            flash.message = "Validation failed for buyer"
+            redirect(action: 'create', model: [buyerInstance: buyerInstance])
+        }
+        log.debug "Buyer instance is validated!!!"
+
+        buyerInstance.profile.contactInfo.address.save()
+        buyerInstance.profile.contactInfo.save()
+        buyerInstance.profile.registrationInfo.save()
+        buyerInstance.profile.save()
+        buyerInstance.save()
+
         if (buyerInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'buyer.label', default: 'Buyer'), buyerInstance.id])}"
             redirect(action: "show", id: buyerInstance.id)
         }
         else {
+            log.debug("Failed to save the buyer: ${buyerInstance.errors}")
             render(view: "create", model: [buyerInstance: buyerInstance])
         }
     }

@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'contactInfo.label', default: 'ContactInfo')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
@@ -18,9 +18,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${contactInfoInstance}">
+            <g:hasErrors bean="${contactInfo}">
             <div class="errors">
-                <g:renderErrors bean="${contactInfoInstance}" as="list" />
+                <g:renderErrors bean="${contactInfo}" as="list" />
             </div>
             </g:hasErrors>
             <g:form action="save" >
@@ -32,8 +32,8 @@
                                 <td valign="top" class="name">
                                     <label for="address"><g:message code="contactInfo.address.label" default="Address" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: contactInfoInstance, field: 'address', 'errors')}">
-                                    <g:select name="address.id" from="${com.reb.info.Address.list()}" optionKey="id" value="${contactInfoInstance?.address?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: contactInfo, field: 'address', 'errors')}">
+                                    <g:select name="address.id" from="${com.reb.info.Address.list()}" optionKey="id" value="${contactInfo?.address?.id}"  />
                                 </td>
                             </tr>
                         
@@ -41,8 +41,8 @@
                                 <td valign="top" class="name">
                                     <label for="email"><g:message code="contactInfo.email.label" default="Email" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: contactInfoInstance, field: 'email', 'errors')}">
-                                    <g:textField name="email" value="${contactInfoInstance?.email}" />
+                                <td valign="top" class="value ${hasErrors(bean: contactInfo, field: 'email', 'errors')}">
+                                    <g:textField name="email" value="${contactInfo?.email}" />
                                 </td>
                             </tr>
                         
@@ -50,8 +50,8 @@
                                 <td valign="top" class="name">
                                     <label for="mobile"><g:message code="contactInfo.mobile.label" default="Mobile" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: contactInfoInstance, field: 'mobile', 'errors')}">
-                                    <g:textField name="mobile" value="${contactInfoInstance?.mobile}" />
+                                <td valign="top" class="value ${hasErrors(bean: contactInfo, field: 'mobile', 'errors')}">
+                                    <g:textField name="mobile" value="${contactInfo?.mobile}" />
                                 </td>
                             </tr>
                         
@@ -59,8 +59,8 @@
                                 <td valign="top" class="name">
                                     <label for="name"><g:message code="contactInfo.name.label" default="Name" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: contactInfoInstance, field: 'name', 'errors')}">
-                                    <g:textField name="name" value="${contactInfoInstance?.name}" />
+                                <td valign="top" class="value ${hasErrors(bean: contactInfo, field: 'name', 'errors')}">
+                                    <g:textField name="name" value="${contactInfo?.name}" />
                                 </td>
                             </tr>
                         
@@ -68,8 +68,8 @@
                                 <td valign="top" class="name">
                                     <label for="phone"><g:message code="contactInfo.phone.label" default="Phone" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: contactInfoInstance, field: 'phone', 'errors')}">
-                                    <g:textField name="phone" value="${contactInfoInstance?.phone}" />
+                                <td valign="top" class="value ${hasErrors(bean: contactInfo, field: 'phone', 'errors')}">
+                                    <g:textField name="phone" value="${contactInfo?.phone}" />
                                 </td>
                             </tr>
                         

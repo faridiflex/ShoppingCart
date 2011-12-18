@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'buyerProfile.label', default: 'BuyerProfile')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
@@ -33,16 +33,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${buyerProfileInstanceList}" status="i" var="buyerProfileInstance">
+                    <g:each in="${buyerProfileList}" status="i" var="buyerProfile">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${buyerProfileInstance.id}">${fieldValue(bean: buyerProfileInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${buyerProfile.id}">${fieldValue(bean: buyerProfile, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: buyerProfileInstance, field: "contactInfo")}</td>
+                            <td>${fieldValue(bean: buyerProfile, field: "contactInfo")}</td>
                         
-                            <td>${fieldValue(bean: buyerProfileInstance, field: "name")}</td>
+                            <td>${fieldValue(bean: buyerProfile, field: "name")}</td>
                         
-                            <td>${fieldValue(bean: buyerProfileInstance, field: "registrationInfo")}</td>
+                            <td>${fieldValue(bean: buyerProfile, field: "registrationInfo")}</td>
                         
                         </tr>
                     </g:each>
@@ -50,7 +50,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${buyerProfileInstanceTotal}" />
+                <g:paginate total="${buyerProfileTotal}" />
             </div>
         </div>
     </body>

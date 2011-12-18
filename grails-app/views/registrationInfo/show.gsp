@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'registrationInfo.label', default: 'RegistrationInfo')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
@@ -25,21 +25,21 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="registrationInfo.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: registrationInfoInstance, field: "id")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: registrationInfo, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="registrationInfo.activationDate.label" default="Activation Date" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate date="${registrationInfoInstance?.activationDate}" /></td>
+                            <td valign="top" class="value"><g:formatDate date="${registrationInfo?.activationDate}" /></td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="registrationInfo.registrationDate.label" default="Registration Date" /></td>
                             
-                            <td valign="top" class="value"><g:formatDate date="${registrationInfoInstance?.registrationDate}" /></td>
+                            <td valign="top" class="value"><g:formatDate date="${registrationInfo?.registrationDate}" /></td>
                             
                         </tr>
                     
@@ -48,7 +48,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${registrationInfoInstance?.id}" />
+                    <g:hiddenField name="id" value="${registrationInfo?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

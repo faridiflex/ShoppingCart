@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'buyerProfile.label', default: 'BuyerProfile')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
@@ -18,9 +18,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${buyerProfileInstance}">
+            <g:hasErrors bean="${buyerProfile}">
             <div class="errors">
-                <g:renderErrors bean="${buyerProfileInstance}" as="list" />
+                <g:renderErrors bean="${buyerProfile}" as="list" />
             </div>
             </g:hasErrors>
             <g:form action="save" >
@@ -32,8 +32,8 @@
                                 <td valign="top" class="name">
                                     <label for="contactInfo"><g:message code="buyerProfile.contactInfo.label" default="Contact Info" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: buyerProfileInstance, field: 'contactInfo', 'errors')}">
-                                    <g:select name="contactInfo.id" from="${com.reb.info.ContactInfo.list()}" optionKey="id" value="${buyerProfileInstance?.contactInfo?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: buyerProfile, field: 'contactInfo', 'errors')}">
+                                    <g:select name="contactInfo.id" from="${com.reb.info.ContactInfo.list()}" optionKey="id" value="${buyerProfile?.contactInfo?.id}"  />
                                 </td>
                             </tr>
                         
@@ -41,8 +41,8 @@
                                 <td valign="top" class="name">
                                     <label for="name"><g:message code="buyerProfile.name.label" default="Name" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: buyerProfileInstance, field: 'name', 'errors')}">
-                                    <g:textField name="name" value="${buyerProfileInstance?.name}" />
+                                <td valign="top" class="value ${hasErrors(bean: buyerProfile, field: 'name', 'errors')}">
+                                    <g:textField name="name" value="${buyerProfile?.name}" />
                                 </td>
                             </tr>
                         
@@ -50,8 +50,8 @@
                                 <td valign="top" class="name">
                                     <label for="registrationInfo"><g:message code="buyerProfile.registrationInfo.label" default="Registration Info" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: buyerProfileInstance, field: 'registrationInfo', 'errors')}">
-                                    <g:select name="registrationInfo.id" from="${com.reb.info.RegistrationInfo.list()}" optionKey="id" value="${buyerProfileInstance?.registrationInfo?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: buyerProfile, field: 'registrationInfo', 'errors')}">
+                                    <g:select name="registrationInfo.id" from="${com.reb.info.RegistrationInfo.list()}" optionKey="id" value="${buyerProfile?.registrationInfo?.id}"  />
                                 </td>
                             </tr>
                         

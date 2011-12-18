@@ -2,4 +2,5 @@ target
 .idea/misc.xml
 .idea/workspace.xml
 *.iml
+nohup.out
 

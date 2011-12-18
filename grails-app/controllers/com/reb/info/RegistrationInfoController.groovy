@@ -10,67 +10,67 @@ class RegistrationInfoController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [registrationInfoInstanceList: RegistrationInfo.list(params), registrationInfoInstanceTotal: RegistrationInfo.count()]
+        [registrationInfoList: RegistrationInfo.list(params), registrationInfoTotal: RegistrationInfo.count()]
     }
 
     def create = {
-        def registrationInfoInstance = new RegistrationInfo()
-        registrationInfoInstance.properties = params
-        return [registrationInfoInstance: registrationInfoInstance]
+        def registrationInfo = new RegistrationInfo()
+        registrationInfo.properties = params
+        return [registrationInfo: registrationInfo]
     }
 
     def save = {
-        def registrationInfoInstance = new RegistrationInfo(params)
-        if (registrationInfoInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'registrationInfo.label', default: 'RegistrationInfo'), registrationInfoInstance.id])}"
-            redirect(action: "show", id: registrationInfoInstance.id)
+        def registrationInfo = new RegistrationInfo(params)
+        if (registrationInfo.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'registrationInfo.label', default: 'RegistrationInfo'), registrationInfo.id])}"
+            redirect(action: "show", id: registrationInfo.id)
         }
         else {
-            render(view: "create", model: [registrationInfoInstance: registrationInfoInstance])
+            render(view: "create", model: [registrationInfo: registrationInfo])
         }
     }
 
     def show = {
-        def registrationInfoInstance = RegistrationInfo.get(params.id)
-        if (!registrationInfoInstance) {
+        def registrationInfo = RegistrationInfo.get(params.id)
+        if (!registrationInfo) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'registrationInfo.label', default: 'RegistrationInfo'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [registrationInfoInstance: registrationInfoInstance]
+            [registrationInfo: registrationInfo]
         }
     }
 
     def edit = {
-        def registrationInfoInstance = RegistrationInfo.get(params.id)
-        if (!registrationInfoInstance) {
+        def registrationInfo = RegistrationInfo.get(params.id)
+        if (!registrationInfo) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'registrationInfo.label', default: 'RegistrationInfo'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [registrationInfoInstance: registrationInfoInstance]
+            return [registrationInfo: registrationInfo]
         }
     }
 
     def update = {
-        def registrationInfoInstance = RegistrationInfo.get(params.id)
-        if (registrationInfoInstance) {
+        def registrationInfo = RegistrationInfo.get(params.id)
+        if (registrationInfo) {
             if (params.version) {
                 def version = params.version.toLong()
-                if (registrationInfoInstance.version > version) {
+                if (registrationInfo.version > version) {
                     
-                    registrationInfoInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'registrationInfo.label', default: 'RegistrationInfo')] as Object[], "Another user has updated this RegistrationInfo while you were editing")
-                    render(view: "edit", model: [registrationInfoInstance: registrationInfoInstance])
+                    registrationInfo.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'registrationInfo.label', default: 'RegistrationInfo')] as Object[], "Another user has updated this RegistrationInfo while you were editing")
+                    render(view: "edit", model: [registrationInfo: registrationInfo])
                     return
                 }
             }
-            registrationInfoInstance.properties = params
-            if (!registrationInfoInstance.hasErrors() && registrationInfoInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'registrationInfo.label', default: 'RegistrationInfo'), registrationInfoInstance.id])}"
-                redirect(action: "show", id: registrationInfoInstance.id)
+            registrationInfo.properties = params
+            if (!registrationInfo.hasErrors() && registrationInfo.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'registrationInfo.label', default: 'RegistrationInfo'), registrationInfo.id])}"
+                redirect(action: "show", id: registrationInfo.id)
             }
             else {
-                render(view: "edit", model: [registrationInfoInstance: registrationInfoInstance])
+                render(view: "edit", model: [registrationInfo: registrationInfo])
             }
         }
         else {
@@ -80,10 +80,10 @@ class RegistrationInfoController {
     }
 
     def delete = {
-        def registrationInfoInstance = RegistrationInfo.get(params.id)
-        if (registrationInfoInstance) {
+        def registrationInfo = RegistrationInfo.get(params.id)
+        if (registrationInfo) {
             try {
-                registrationInfoInstance.delete(flush: true)
+                registrationInfo.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'registrationInfo.label', default: 'RegistrationInfo'), params.id])}"
                 redirect(action: "list")
             }

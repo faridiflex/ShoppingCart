@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main1" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'buyerProfile.label', default: 'BuyerProfile')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
@@ -25,28 +25,28 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="buyerProfile.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: buyerProfileInstance, field: "id")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: buyerProfile, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="buyerProfile.contactInfo.label" default="Contact Info" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="contactInfo" action="show" id="${buyerProfileInstance?.contactInfo?.id}">${buyerProfileInstance?.contactInfo?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="contactInfo" action="show" id="${buyerProfile?.contactInfo?.id}">${buyerProfile?.contactInfo?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="buyerProfile.name.label" default="Name" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: buyerProfileInstance, field: "name")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: buyerProfile, field: "name")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="buyerProfile.registrationInfo.label" default="Registration Info" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="registrationInfo" action="show" id="${buyerProfileInstance?.registrationInfo?.id}">${buyerProfileInstance?.registrationInfo?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="registrationInfo" action="show" id="${buyerProfile?.registrationInfo?.id}">${buyerProfile?.registrationInfo?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -55,7 +55,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${buyerProfileInstance?.id}" />
+                    <g:hiddenField name="id" value="${buyerProfile?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

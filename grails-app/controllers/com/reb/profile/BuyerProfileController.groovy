@@ -10,67 +10,67 @@ class BuyerProfileController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [buyerProfileInstanceList: BuyerProfile.list(params), buyerProfileInstanceTotal: BuyerProfile.count()]
+        [buyerProfileList: BuyerProfile.list(params), buyerProfileTotal: BuyerProfile.count()]
     }
 
     def create = {
-        def buyerProfileInstance = new BuyerProfile()
-        buyerProfileInstance.properties = params
-        return [buyerProfileInstance: buyerProfileInstance]
+        def buyerProfile = new BuyerProfile()
+        buyerProfile.properties = params
+        return [buyerProfile: buyerProfile]
     }
 
     def save = {
-        def buyerProfileInstance = new BuyerProfile(params)
-        if (buyerProfileInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'buyerProfile.label', default: 'BuyerProfile'), buyerProfileInstance.id])}"
-            redirect(action: "show", id: buyerProfileInstance.id)
+        def buyerProfile = new BuyerProfile(params)
+        if (buyerProfile.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'buyerProfile.label', default: 'BuyerProfile'), buyerProfile.id])}"
+            redirect(action: "show", id: buyerProfile.id)
         }
         else {
-            render(view: "create", model: [buyerProfileInstance: buyerProfileInstance])
+            render(view: "create", model: [buyerProfile: buyerProfile])
         }
     }
 
     def show = {
-        def buyerProfileInstance = BuyerProfile.get(params.id)
-        if (!buyerProfileInstance) {
+        def buyerProfile = BuyerProfile.get(params.id)
+        if (!buyerProfile) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'buyerProfile.label', default: 'BuyerProfile'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [buyerProfileInstance: buyerProfileInstance]
+            [buyerProfile: buyerProfile]
         }
     }
 
     def edit = {
-        def buyerProfileInstance = BuyerProfile.get(params.id)
-        if (!buyerProfileInstance) {
+        def buyerProfile = BuyerProfile.get(params.id)
+        if (!buyerProfile) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'buyerProfile.label', default: 'BuyerProfile'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [buyerProfileInstance: buyerProfileInstance]
+            return [buyerProfile: buyerProfile]
         }
     }
 
     def update = {
-        def buyerProfileInstance = BuyerProfile.get(params.id)
-        if (buyerProfileInstance) {
+        def buyerProfile = BuyerProfile.get(params.id)
+        if (buyerProfile) {
             if (params.version) {
                 def version = params.version.toLong()
-                if (buyerProfileInstance.version > version) {
+                if (buyerProfile.version > version) {
                     
-                    buyerProfileInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'buyerProfile.label', default: 'BuyerProfile')] as Object[], "Another user has updated this BuyerProfile while you were editing")
-                    render(view: "edit", model: [buyerProfileInstance: buyerProfileInstance])
+                    buyerProfile.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'buyerProfile.label', default: 'BuyerProfile')] as Object[], "Another user has updated this BuyerProfile while you were editing")
+                    render(view: "edit", model: [buyerProfile: buyerProfile])
                     return
                 }
             }
-            buyerProfileInstance.properties = params
-            if (!buyerProfileInstance.hasErrors() && buyerProfileInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'buyerProfile.label', default: 'BuyerProfile'), buyerProfileInstance.id])}"
-                redirect(action: "show", id: buyerProfileInstance.id)
+            buyerProfile.properties = params
+            if (!buyerProfile.hasErrors() && buyerProfile.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'buyerProfile.label', default: 'BuyerProfile'), buyerProfile.id])}"
+                redirect(action: "show", id: buyerProfile.id)
             }
             else {
-                render(view: "edit", model: [buyerProfileInstance: buyerProfileInstance])
+                render(view: "edit", model: [buyerProfile: buyerProfile])
             }
         }
         else {
@@ -80,10 +80,10 @@ class BuyerProfileController {
     }
 
     def delete = {
-        def buyerProfileInstance = BuyerProfile.get(params.id)
-        if (buyerProfileInstance) {
+        def buyerProfile = BuyerProfile.get(params.id)
+        if (buyerProfile) {
             try {
-                buyerProfileInstance.delete(flush: true)
+                buyerProfile.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'buyerProfile.label', default: 'BuyerProfile'), params.id])}"
                 redirect(action: "list")
             }

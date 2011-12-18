@@ -10,67 +10,67 @@ class ContactInfoController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [contactInfoInstanceList: ContactInfo.list(params), contactInfoInstanceTotal: ContactInfo.count()]
+        [contactInfoList: ContactInfo.list(params), contactInfoTotal: ContactInfo.count()]
     }
 
     def create = {
-        def contactInfoInstance = new ContactInfo()
-        contactInfoInstance.properties = params
-        return [contactInfoInstance: contactInfoInstance]
+        def contactInfo = new ContactInfo()
+        contactInfo.properties = params
+        return [contactInfo: contactInfo]
     }
 
     def save = {
-        def contactInfoInstance = new ContactInfo(params)
-        if (contactInfoInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'contactInfo.label', default: 'ContactInfo'), contactInfoInstance.id])}"
-            redirect(action: "show", id: contactInfoInstance.id)
+        def contactInfo = new ContactInfo(params)
+        if (contactInfo.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'contactInfo.label', default: 'ContactInfo'), contactInfo.id])}"
+            redirect(action: "show", id: contactInfo.id)
         }
         else {
-            render(view: "create", model: [contactInfoInstance: contactInfoInstance])
+            render(view: "create", model: [contactInfo: contactInfo])
         }
     }
 
     def show = {
-        def contactInfoInstance = ContactInfo.get(params.id)
-        if (!contactInfoInstance) {
+        def contactInfo = ContactInfo.get(params.id)
+        if (!contactInfo) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'contactInfo.label', default: 'ContactInfo'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [contactInfoInstance: contactInfoInstance]
+            [contactInfo: contactInfo]
         }
     }
 
     def edit = {
-        def contactInfoInstance = ContactInfo.get(params.id)
-        if (!contactInfoInstance) {
+        def contactInfo = ContactInfo.get(params.id)
+        if (!contactInfo) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'contactInfo.label', default: 'ContactInfo'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [contactInfoInstance: contactInfoInstance]
+            return [contactInfo: contactInfo]
         }
     }
 
     def update = {
-        def contactInfoInstance = ContactInfo.get(params.id)
-        if (contactInfoInstance) {
+        def contactInfo = ContactInfo.get(params.id)
+        if (contactInfo) {
             if (params.version) {
                 def version = params.version.toLong()
-                if (contactInfoInstance.version > version) {
+                if (contactInfo.version > version) {
                     
-                    contactInfoInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'contactInfo.label', default: 'ContactInfo')] as Object[], "Another user has updated this ContactInfo while you were editing")
-                    render(view: "edit", model: [contactInfoInstance: contactInfoInstance])
+                    contactInfo.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'contactInfo.label', default: 'ContactInfo')] as Object[], "Another user has updated this ContactInfo while you were editing")
+                    render(view: "edit", model: [contactInfo: contactInfo])
                     return
                 }
             }
-            contactInfoInstance.properties = params
-            if (!contactInfoInstance.hasErrors() && contactInfoInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'contactInfo.label', default: 'ContactInfo'), contactInfoInstance.id])}"
-                redirect(action: "show", id: contactInfoInstance.id)
+            contactInfo.properties = params
+            if (!contactInfo.hasErrors() && contactInfo.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'contactInfo.label', default: 'ContactInfo'), contactInfo.id])}"
+                redirect(action: "show", id: contactInfo.id)
             }
             else {
-                render(view: "edit", model: [contactInfoInstance: contactInfoInstance])
+                render(view: "edit", model: [contactInfo: contactInfo])
             }
         }
         else {
@@ -80,10 +80,10 @@ class ContactInfoController {
     }
 
     def delete = {
-        def contactInfoInstance = ContactInfo.get(params.id)
-        if (contactInfoInstance) {
+        def contactInfo = ContactInfo.get(params.id)
+        if (contactInfo) {
             try {
-                contactInfoInstance.delete(flush: true)
+                contactInfo.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'contactInfo.label', default: 'ContactInfo'), params.id])}"
                 redirect(action: "list")
             }
