@@ -1,0 +1,6 @@
+.table_educator { width:100%; float:left; text-align:left; margin:16px 16px 12px 0;}
+.table_educator th {background:#f4f4f6 url(../images/table_edc.png) repeat-x; height:34px;text-align:left; color:#fff; font:bold 12px Arial, Helvetica, sans-serif;padding:0 5px 0 5px;text-transform:capitalize; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; margin-right:1px;}
+.table_educator td { padding:0 5px 0 5px; border-bottom:dotted 1px #ccc;   }
+.table_educator  .odd {	background:#f4f4f6; height:35px; font:normal 12px Arial, Helvetica, sans-serif; color:#555454; }
+.table_educator  .even { background:#ecf5f9; height:35px; font:normal 12px Arial, Helvetica, sans-serif; color:#555454;}
+.table_educator .name_table { font:bold 14px Arial, Helvetica, sans-serif; color:#006699;}

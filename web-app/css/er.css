@@ -1,0 +1,71 @@
+.header, .header a {
+    text-align: right;
+    width: 100%;
+    border: 12px;
+    color: #000000;
+}
+
+.content1 {
+    width: 100%;
+    border: solid black 2px;
+    background-color: white;
+    height: 80%;
+    font-size: 12px;
+
+}
+
+.mainContent {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+.sidebar {
+    width: 15%;
+    height: 90%;
+    background-color: #DDDDFF;
+    float: right;
+
+    padding: 1%;
+    margin: 10px;
+    font-size: 11px;
+    text-align: left;
+}
+
+.ui-dialog-titlebar {
+    font-size: 11px;
+}
+
+ui-dialog-titlebar input {
+    border: solid blue 2px;
+    width: 90%;
+}
+
+.ui-tabs-nav {
+
+}
+
+.error {
+    font-size: 10px;
+    font-weight: bold;
+    color: red;
+}
+
+.msg {
+    font-size: 10px;
+    font-weight: bold;
+    color: red;
+}
+
+.grid{
+               width:100%;
+               font-size:11px;
+               text-align: left;
+           }
+
+   .grid td{
+   width:20%
+   }
+      </style>

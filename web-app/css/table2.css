@@ -1,0 +1,12 @@
+.table_educator { width:100%; float:left; text-align:left; margin:16px 16px 12px 0;}
+.table_educator th {
+    font-family:Arial;font-size:11px;font-weight:bold;font-style:normal;text-decoration:none;color:#333333;
+    height:34px;text-align:left; text-transform:capitalize; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; margin-right:1px;}
+.table_educator td {
+    font-family:Arial;font-size:12px;font-weight:normal;font-style:normal;text-decoration:none;color:#333333;
+    padding:0 5px 0 5px; border-bottom:dotted 1px #ccc;
+}
+.table_educator  .odd { height:35px; font:normal 12px Arial, Helvetica, sans-serif; color:#555454; }
+.table_educator  .even { background:#ecf5f9; height:35px; font:normal 12px Arial, Helvetica, sans-serif; color:#555454;}
+.table_educator  td a{font-size:11px;}.table_educator .name_table { font:bold 14px Arial, Helvetica, sans-serif; color:#006699;}
+.table_educator  td a{font-size:11px;}

@@ -1,0 +1,121 @@
+body {
+    margin: 0px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+}
+
+.er1 {
+    color:red;
+    font-weight: bold;
+    background: #ddd;
+}
+//
+//div#outBox {
+//    border: 1px solid #ccc;
+//    background-color: #eee;
+//    font-family: Arial;
+//    font-size: 11px;
+//}
+//
+//div#outBox a, div#outBox a:visited, div#outBox a:hover {
+//    color: #0101ff;
+//    text-decoration: underline;
+//}
+//
+//div#inBox {
+//}
+//
+//.lspan {
+//    display: inline-block;
+//    width: 130px;
+//}
+
+
+
+div#outBox{
+    border: solid black 2px;
+    width:600px;
+    background-color: #FFFFAA;
+    font-family: serif;
+    font-size: 15px;
+    MARGIN: 5PX;
+    PADDING: 5PX;
+}
+
+div#inBox{
+    border: solid black 1px;
+    margin: 5px;
+    padding: 5px;
+    background-color: #dddddd;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.lspan{
+    display: inline-block;
+    width: 40%;
+    padding: 3px;
+
+
+}
+
+
+.date {
+    display: inline-block;
+    width: 80px;
+}
+
+.status {
+    width: 40px;
+    padding: 0 10px 0 0;
+    display: inline-block;
+}
+
+.action {
+    padding: 0 10px 0 0;
+}
+
+.btmCopy {
+    line-height: 14px;
+}
+
+h2 {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #636567;
+    margin: 0 0 10px 0;
+    padding-left: 0;
+    display: inline-block;
+    float: left;
+}
+
+.altSpanA {
+    background-color: #f4f6fa;
+    padding: 14px 8px;
+}
+
+.altSpanB {
+    background-color: #fff;
+    padding: 14px 8px;
+}
+
+.ORHeaderWrapper {
+    clear: both;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 0 10px 0;
+}
+
+.ORHeaderWrapper .btn {
+    display: block;
+    float: right;
+    padding: 0 3px 0 0;
+}
+
+#outBox .colHeaders {
+    background-color: #efeeee;
+    padding: 11px 8px;
+    border-bottom: 1px solid #000;
+}
+
