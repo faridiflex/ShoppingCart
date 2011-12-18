@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
+        <meta name="layout" content="main1" />
         <g:set var="entityName" value="${message(code: 'address.label', default: 'Address')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
@@ -37,20 +37,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${addressInstanceList}" status="i" var="addressInstance">
+                    <g:each in="${addressList}" status="i" var="address">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${addressInstance.id}">${fieldValue(bean: addressInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${address.id}">${fieldValue(bean: address, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: addressInstance, field: "addLine1")}</td>
+                            <td>${fieldValue(bean: address, field: "addLine1")}</td>
                         
-                            <td>${fieldValue(bean: addressInstance, field: "addLine2")}</td>
+                            <td>${fieldValue(bean: address, field: "addLine2")}</td>
                         
-                            <td>${fieldValue(bean: addressInstance, field: "city")}</td>
+                            <td>${fieldValue(bean: address, field: "city")}</td>
                         
-                            <td>${fieldValue(bean: addressInstance, field: "landmark")}</td>
+                            <td>${fieldValue(bean: address, field: "landmark")}</td>
                         
-                            <td>${fieldValue(bean: addressInstance, field: "pinCode")}</td>
+                            <td>${fieldValue(bean: address, field: "pinCode")}</td>
                         
                         </tr>
                     </g:each>
@@ -58,7 +58,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${addressInstanceTotal}" />
+                <g:paginate total="${addressTotal}" />
             </div>
         </div>
     </body>

@@ -10,67 +10,67 @@ class AddressController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [addressInstanceList: Address.list(params), addressInstanceTotal: Address.count()]
+        [addressList: Address.list(params), addressTotal: Address.count()]
     }
 
     def create = {
-        def addressInstance = new Address()
-        addressInstance.properties = params
-        return [addressInstance: addressInstance]
+        def address = new Address()
+        address.properties = params
+        return [address: address]
     }
 
     def save = {
-        def addressInstance = new Address(params)
-        if (addressInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'address.label', default: 'Address'), addressInstance.id])}"
-            redirect(action: "show", id: addressInstance.id)
+        def address = new Address(params)
+        if (address.save(flush: true)) {
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'address.label', default: 'Address'), address.id])}"
+            redirect(action: "show", id: address.id)
         }
         else {
-            render(view: "create", model: [addressInstance: addressInstance])
+            render(view: "create", model: [address: address])
         }
     }
 
     def show = {
-        def addressInstance = Address.get(params.id)
-        if (!addressInstance) {
+        def address = Address.get(params.id)
+        if (!address) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'address.label', default: 'Address'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [addressInstance: addressInstance]
+            [address: address]
         }
     }
 
     def edit = {
-        def addressInstance = Address.get(params.id)
-        if (!addressInstance) {
+        def address = Address.get(params.id)
+        if (!address) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'address.label', default: 'Address'), params.id])}"
             redirect(action: "list")
         }
         else {
-            return [addressInstance: addressInstance]
+            return [address: address]
         }
     }
 
     def update = {
-        def addressInstance = Address.get(params.id)
-        if (addressInstance) {
+        def address = Address.get(params.id)
+        if (address) {
             if (params.version) {
                 def version = params.version.toLong()
-                if (addressInstance.version > version) {
+                if (address.version > version) {
                     
-                    addressInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'address.label', default: 'Address')] as Object[], "Another user has updated this Address while you were editing")
-                    render(view: "edit", model: [addressInstance: addressInstance])
+                    address.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'address.label', default: 'Address')] as Object[], "Another user has updated this Address while you were editing")
+                    render(view: "edit", model: [address: address])
                     return
                 }
             }
-            addressInstance.properties = params
-            if (!addressInstance.hasErrors() && addressInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'address.label', default: 'Address'), addressInstance.id])}"
-                redirect(action: "show", id: addressInstance.id)
+            address.properties = params
+            if (!address.hasErrors() && address.save(flush: true)) {
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'address.label', default: 'Address'), address.id])}"
+                redirect(action: "show", id: address.id)
             }
             else {
-                render(view: "edit", model: [addressInstance: addressInstance])
+                render(view: "edit", model: [address: address])
             }
         }
         else {
@@ -80,10 +80,10 @@ class AddressController {
     }
 
     def delete = {
-        def addressInstance = Address.get(params.id)
-        if (addressInstance) {
+        def address = Address.get(params.id)
+        if (address) {
             try {
-                addressInstance.delete(flush: true)
+                address.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'address.label', default: 'Address'), params.id])}"
                 redirect(action: "list")
             }

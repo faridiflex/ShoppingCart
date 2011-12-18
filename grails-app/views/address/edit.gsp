@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="layout" content="main" />
+        <meta name="layout" content="main1" />
         <g:set var="entityName" value="${message(code: 'address.label', default: 'Address')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
@@ -19,14 +19,14 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${addressInstance}">
+            <g:hasErrors bean="${address}">
             <div class="errors">
-                <g:renderErrors bean="${addressInstance}" as="list" />
+                <g:renderErrors bean="${address}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${addressInstance?.id}" />
-                <g:hiddenField name="version" value="${addressInstance?.version}" />
+                <g:hiddenField name="id" value="${address?.id}" />
+                <g:hiddenField name="version" value="${address?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -35,8 +35,8 @@
                                 <td valign="top" class="name">
                                   <label for="addLine1"><g:message code="address.addLine1.label" default="Add Line1" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: addressInstance, field: 'addLine1', 'errors')}">
-                                    <g:textField name="addLine1" value="${addressInstance?.addLine1}" />
+                                <td valign="top" class="value ${hasErrors(bean: address, field: 'addLine1', 'errors')}">
+                                    <g:textField name="addLine1" value="${address?.addLine1}" />
                                 </td>
                             </tr>
                         
@@ -44,8 +44,8 @@
                                 <td valign="top" class="name">
                                   <label for="addLine2"><g:message code="address.addLine2.label" default="Add Line2" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: addressInstance, field: 'addLine2', 'errors')}">
-                                    <g:textField name="addLine2" value="${addressInstance?.addLine2}" />
+                                <td valign="top" class="value ${hasErrors(bean: address, field: 'addLine2', 'errors')}">
+                                    <g:textField name="addLine2" value="${address?.addLine2}" />
                                 </td>
                             </tr>
                         
@@ -53,8 +53,8 @@
                                 <td valign="top" class="name">
                                   <label for="city"><g:message code="address.city.label" default="City" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: addressInstance, field: 'city', 'errors')}">
-                                    <g:textField name="city" value="${addressInstance?.city}" />
+                                <td valign="top" class="value ${hasErrors(bean: address, field: 'city', 'errors')}">
+                                    <g:textField name="city" value="${address?.city}" />
                                 </td>
                             </tr>
                         
@@ -62,8 +62,8 @@
                                 <td valign="top" class="name">
                                   <label for="landmark"><g:message code="address.landmark.label" default="Landmark" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: addressInstance, field: 'landmark', 'errors')}">
-                                    <g:textField name="landmark" value="${addressInstance?.landmark}" />
+                                <td valign="top" class="value ${hasErrors(bean: address, field: 'landmark', 'errors')}">
+                                    <g:textField name="landmark" value="${address?.landmark}" />
                                 </td>
                             </tr>
                         
@@ -71,8 +71,8 @@
                                 <td valign="top" class="name">
                                   <label for="pinCode"><g:message code="address.pinCode.label" default="Pin Code" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: addressInstance, field: 'pinCode', 'errors')}">
-                                    <g:textField name="pinCode" value="${fieldValue(bean: addressInstance, field: 'pinCode')}" />
+                                <td valign="top" class="value ${hasErrors(bean: address, field: 'pinCode', 'errors')}">
+                                    <g:textField name="pinCode" value="${fieldValue(bean: address, field: 'pinCode')}" />
                                 </td>
                             </tr>
                         
@@ -80,8 +80,8 @@
                                 <td valign="top" class="name">
                                   <label for="state"><g:message code="address.state.label" default="State" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: addressInstance, field: 'state', 'errors')}">
-                                    <g:textField name="state" value="${addressInstance?.state}" />
+                                <td valign="top" class="value ${hasErrors(bean: address, field: 'state', 'errors')}">
+                                    <g:textField name="state" value="${address?.state}" />
                                 </td>
                             </tr>
                         
