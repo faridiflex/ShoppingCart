@@ -31,19 +31,19 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${buyerInstanceList}" status="i" var="buyerInstance">
+				<g:each in="${buyerList}" status="i" var="buyer">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${buyerInstance.id}">${fieldValue(bean: buyerInstance, field: "loginId")}</g:link></td>
+						<td><g:link action="show" id="${buyer.id}">${fieldValue(bean: buyer, field: "loginId")}</g:link></td>
 					
-						<td>${fieldValue(bean: buyerInstance, field: "profile")}</td>
+						<td>${fieldValue(bean: buyer, field: "profile")}</td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${buyerInstanceTotal}" />
+				<g:paginate total="${buyerTotal}" />
 			</div>
 		</div>
 	</body>

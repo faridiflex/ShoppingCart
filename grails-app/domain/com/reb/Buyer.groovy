@@ -7,10 +7,14 @@ class Buyer {
 
     String loginId
     BuyerProfile profile
+    
+    Date dateCreated
+    Date lastUpdated
 
     static hasMany = [tags: Tag]
 
     static constraints = {
+        profile(nullable: true)
     }
 
 }
