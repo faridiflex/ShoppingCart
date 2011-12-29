@@ -1,7 +1,5 @@
 package com.reb.flow
 
-import com.reb.exception.FlowException
-
 class FlowHelper {
     String currentSF
     List<String> sequence
@@ -24,7 +22,7 @@ class FlowHelper {
     String next() {
         int index = sequence.indexOf(currentSF) + 1
         if (index == sequence.size()) {
-            throw new FlowException("No Subflow after $currentSF")
+            throw new Exception("No Subflow after $currentSF")
         }
         currentSF = sequence.get(index)
         currentSF
@@ -33,10 +31,10 @@ class FlowHelper {
     String previous() {
         int index = sequence.indexOf(currentSF)
         if (index == 0) {
-            throw new FlowException("No Subflow before $currentSF")
+            throw new Exception("No Subflow before $currentSF")
         }
         if (index == -1) {
-            throw new FlowException("Current subflow not a part of sequence")
+            throw new Exception("Current subflow not a part of sequence")
         }
         currentSF = sequence.get(index - 1)
         currentSF
