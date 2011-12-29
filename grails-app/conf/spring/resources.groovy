@@ -1,5 +1,3 @@
-import com.reb.customProperties.CustomPropertiesEditorRegistrar
-
+// Place your Spring DSL code here
 beans = {
-    customPropertyEditorRegistrar(CustomPropertiesEditorRegistrar)
 }
