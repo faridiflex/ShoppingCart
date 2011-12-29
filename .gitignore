@@ -2,4 +2,7 @@ target
 .idea
 *.iml
 nohup.out
+*.ipr
+*.iws
+
 
