@@ -26,14 +26,14 @@ class BuyerController {
             return
         }
 
-		flash.message = message(code: 'default.created.message', args: [message(code: 'buyer.label', default: 'Buyer'), buyer.id])
+        flash.message = message(code: 'default.created.message', args: [message(code: 'buyer.label', default: 'Buyer'), buyer.id])
         redirect(action: "show", id: buyer.id)
     }
 
     def show() {
         def buyer = Buyer.get(params.id)
         if (!buyer) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
             redirect(action: "list")
             return
         }
@@ -64,8 +64,8 @@ class BuyerController {
             def version = params.version.toLong()
             if (buyer.version > version) {
                 buyer.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'buyer.label', default: 'Buyer')] as Object[],
-                          "Another user has updated this Buyer while you were editing")
+                        [message(code: 'buyer.label', default: 'Buyer')] as Object[],
+                        "Another user has updated this Buyer while you were editing")
                 render(view: "edit", model: [buyer: buyer])
                 return
             }
@@ -78,26 +78,33 @@ class BuyerController {
             return
         }
 
-		flash.message = message(code: 'default.updated.message', args: [message(code: 'buyer.label', default: 'Buyer'), buyer.id])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'buyer.label', default: 'Buyer'), buyer.id])
         redirect(action: "show", id: buyer.id)
     }
 
     def delete() {
         def buyer = Buyer.get(params.id)
         if (!buyer) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
             redirect(action: "list")
             return
         }
 
         try {
             buyer.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'buyer.label', default: 'Buyer'), params.id])
             redirect(action: "show", id: params.id)
         }
+    }
+
+
+    def addTags() {
+        Buyer buyer = Buyer.get(params.id)
+        log.debug("Buyer: $buyer")
+        println("Buyer: $buyer")
     }
 }

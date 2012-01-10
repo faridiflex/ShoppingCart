@@ -1,14 +1,18 @@
 package com.reb
 
-import com.reb.info.ProductInfo
-import com.reb.info.Tag
+import com.reb.enums.ProductStatus
 
 class Product {
 
-    ProductInfo productInfo
+    String name
+    String description
+    ProductStatus status
 
-//    static hasMany = [tags: Tag]
+    static hasMany = [categories: ProductCategory]
+
+    byte[] primaryImage
 
     static constraints = {
+        primaryImage(nullable: true)
     }
 }
