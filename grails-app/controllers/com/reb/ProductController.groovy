@@ -1,6 +1,8 @@
 package com.reb
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
+
 
 class ProductController {
 
@@ -15,6 +17,7 @@ class ProductController {
         [productList: Product.list(params), productTotal: Product.count()]
     }
 
+    @Secured(['ROLE_ADMIN'])
     def create() {
         [product: new Product(params)]
     }

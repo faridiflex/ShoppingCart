@@ -5,7 +5,7 @@ import com.reb.info.Tag
 
 class Buyer {
 
-    String loginId
+    User loginId
     BuyerProfile profile
     
     Date dateCreated

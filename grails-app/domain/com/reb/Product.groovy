@@ -7,12 +7,21 @@ class Product {
     String name
     String description
     ProductStatus status
-
-    static hasMany = [categories: ProductCategory]
-
     byte[] primaryImage
 
+    static hasMany = [categories: ProductCategory]
     static constraints = {
         primaryImage(nullable: true)
     }
+
+    static transients = ['price']
+
+    Integer getPrice() {
+        ProductPrice.find {
+            product == this
+            validFrom < new Date()
+            validTill > new Date()
+        }?.priceInPaise
+    }
+
 }

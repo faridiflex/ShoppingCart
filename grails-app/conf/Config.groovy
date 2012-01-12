@@ -93,3 +93,8 @@ log4j = {
 
     debug 'grails.app.controller', 'grails.app.domain', 'grails.app.service', 'grails.app.jobs'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.reb.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.reb.UserRole'
+grails.plugins.springsecurity.authority.className = 'com.reb.Role'
